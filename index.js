@@ -22,6 +22,14 @@ let tickets = {
     ticket_creator: 'Mary Batman',
     ticket_owner: 'Matt C',
     ticket_status: 'Open'
+  },
+  3: {
+    id: '3',
+    ticket_title: 'Fix this please!',
+    ticket_description: 'The app crashes each time I try to submit something',
+    ticket_creator: 'Marty Byrd',
+    ticket_owner: 'Matt C',
+    ticket_status: 'Open'
   }
 }
 
