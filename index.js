@@ -16,12 +16,12 @@ mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrl
   if(err) {
     console.log('Uh oh. Something happened.' + err);
   } else {
-    console.log('Connection Established');
+    console.log('Wooo!! Database connection established.');
   }
 })
 const db = mongoose.connection
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to Database'))
+// db.on('error', (error) => console.error(error));
+// db.once('open', () => console.log('Connected to Database'))
 
 
 
