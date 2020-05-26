@@ -1,9 +1,59 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const mongoose = require('mongoose');
 
 const port = 4000;
+app.listen(port, () => console.log(`App listening at http://localhost:${port}`))
+
+/*
+ * DB Connection
+*/
+mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true }, function(err) {
+  if(err) {
+    console.log('Uh oh. Something happened.' + err);
+  } else {
+    console.log('Connection Established');
+  }
+})
+const db = mongoose.connection
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to Database'))
+
+
+
+
+app.get('/', (req, res) => res.send('This is the api!'))
+
+
+app.get('/api/tickets', (req, res) => {
+  return res.send(Object.values(tickets));
+})
+
+app.get('/api/tickets/:id', (req, res) => {
+  return res.send(tickets[req.params.id])
+})
+
+
+
+app.put('/', (req,res) =>
+  res.send('Got a PUT request at /user')
+)
+
+app.delete('/user', (req,res) =>
+  res.send('Got a DELETE request at /user')
+)
+
+
+
+
+
+
+
+
 
 
 let tickets = {
@@ -32,29 +82,3 @@ let tickets = {
     ticket_status: 'Open'
   }
 }
-
-
-
-
-app.get('/', (req, res) => res.send('This is the api!'))
-
-
-app.get('/api/tickets', (req, res) => {
-  return res.send(Object.values(tickets));
-})
-
-app.get('/api/tickets/:id', (req, res) => {
-  return res.send(tickets[req.params.id])
-})
-
-
-
-app.put('/', (req,res) =>
-  res.send('Got a PUT request at /user')
-)
-
-app.delete('/user', (req,res) =>
-  res.send('Got a DELETE request at /user')
-)
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
