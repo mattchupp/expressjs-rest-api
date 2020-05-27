@@ -1,13 +1,12 @@
 {
-  "name": "test_db",
+  "name": "REST API",
   "version": "1.0.0",
-  "description": "testing express js",
+  "description": "Template for REST API",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "author": "matt_chupp",
+  "author": "Matt Chupp",
   "license": "ISC",
   "dependencies": {
     "babel": "^6.23.0",
