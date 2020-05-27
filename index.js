@@ -14,20 +14,16 @@ app.listen(port, () => console.log(`App listening at http://localhost:${port}`))
 */
 mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true }, function(err) {
   if(err) {
-    console.log('Uh oh. Something happened.' + err);
+    console.log('Grab another drink. Something bad happened.' + err);
   } else {
-    console.log('Wooo!! Database connection established.');
+    console.log('Rest easy. Your database connection is working.');
   }
 })
 const db = mongoose.connection
-// db.on('error', (error) => console.error(error));
-// db.once('open', () => console.log('Connected to Database'))
-
-
-app.use(express.json())
 
 /*
  * Set up route for api calls
+ * In this case it is set to be /tickets for the endpoint
 */
 const ticketsRouter = require('./routes/tickets')
 app.use('/tickets', ticketsRouter)

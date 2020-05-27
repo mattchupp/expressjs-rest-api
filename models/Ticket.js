@@ -20,6 +20,10 @@ const ticketSchema = new mongoose.Schema({
   ticket_status: {
     type: String,
     default: 'Open'
+  },
+  date_created: {
+    type: Date,
+    default: Date.now
   }
 
 })
